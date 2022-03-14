@@ -38,14 +38,16 @@ genBtn.addEventListener("click", async function() {
         } else {
             //chain promises
 
-            GetWeatherData(zipCode);
-            postDataFun("http://localhost:5500/postData", {
-                //getting the temp value from the api
-                temp: tmpp,
-                // getting the value from the textarea
-                feelings: document.querySelector("#feelings").value,
-                newDate: newDate,
-            });
+            GetWeatherData(zipCode).then(
+                postDataFun("http://localhost:5500/postData", {
+                    //getting the temp value from the api
+                    temp: tmpp,
+                    // getting the value from the textarea
+                    feelings: document.querySelector("#feelings").value,
+                    newDate: newDate,
+                })
+            );
+
             my_UI_Updater();
         }
     }
@@ -76,7 +78,7 @@ const GetWeatherData = async(zipCode) => {
 //////////////////////////////////////////////////////////////////post data////////////////////////////////////////////////
 const postDataFun = async(url = "", data = {}) => {
     //this is for testing only
-    console.log("inside post data");
+    //console.log("inside post data");
     await fetch("http://localhost:5500/postData", {
         method: "POST",
         credentials: "same-origin",
@@ -87,7 +89,7 @@ const postDataFun = async(url = "", data = {}) => {
     });
     try {
         const data = await response.json();
-        console.log("response data is :" + data);
+        //console.log("response data is :" + data);
         return data;
     } catch (err) {
         // if there were any error then catch an error
