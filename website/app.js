@@ -2,6 +2,7 @@
 
 // Create a new date instance dynamically with JS
 let d = new Date();
+let tmpp = NaN;
 let newDate = 1 + d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 
 //storing my api key and api url
@@ -14,7 +15,7 @@ let genBtn = document.querySelector("#generate");
 // Event listener linked to Generate button
 genBtn.addEventListener("click", async function() {
     //this is for testing only
-    console.log("click");
+    //console.log("click");
     //go to the inputed zip to take the entered zip code
     let zipCode = document.getElementById("zip").value;
     //this is for testing only
@@ -37,33 +38,14 @@ genBtn.addEventListener("click", async function() {
         } else {
             //chain promises
 
-            //this is for testing only
-            console.log("there is zip code");
-            //this is my api now
-            ///////////////////////////////////////////////////////zipCode///////////////////////////
-            let weatherApi = `https://api.openweathermap.org/data/2.5/weather?zip=${10001},us&appid=${myApiKey}&units=metric`;
-            //this is for testing only
-            console.log(weatherApi);
-
-            //fetching from the server
-            //await used to whait for response
-            const resp = await fetch(weatherApi);
-            //convert it to JSON format
-            const data = await resp.json();
-            //storing the tempreature
-            const theTEMP = data.main.temp;
-            //this is for testing only
-            console.log("temp is:" + theTEMP);
-            //this is for testing only
-            // console.log("response is:\n");
-            //console.log(data);
-
+            GetWeatherData(zipCode);
             postDataFun("http://localhost:5500/postData", {
-                temp: data.main.temp,
+                //getting the temp value from the api
+                temp: tmpp,
+                // getting the value from the textarea
                 feelings: document.querySelector("#feelings").value,
                 newDate: newDate,
             });
-
             my_UI_Updater();
         }
     }
@@ -71,13 +53,11 @@ genBtn.addEventListener("click", async function() {
 
 const GetWeatherData = async(zipCode) => {
     //this is for testing only
-    console.log("there is zip code");
+    //console.log("there is zip code");
     //this is my api now
-    ///////////////////////////////////////////////////////zipCode///////////////////////////
-    let weatherApi = `https://api.openweathermap.org/data/2.5/weather?zip=${10001},us&appid=${myApiKey}&units=metric`;
+    let weatherApi = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${myApiKey}&units=metric`;
     //this is for testing only
-    console.log(weatherApi);
-
+    //console.log(weatherApi);
     //fetching from the server
     //await used to whait for response
     const resp = await fetch(weatherApi);
@@ -85,11 +65,12 @@ const GetWeatherData = async(zipCode) => {
     const data = await resp.json();
     //storing the tempreature
     const theTEMP = data.main.temp;
+    tmpp = theTEMP;
     //this is for testing only
     console.log("temp is:" + theTEMP);
     //this is for testing only
-    console.log("response is:\n");
-    console.log(data);
+    // console.log("response is:\n");
+    //console.log(data);
 };
 
 //////////////////////////////////////////////////////////////////post data////////////////////////////////////////////////

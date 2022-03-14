@@ -21,7 +21,7 @@ app.use(express.static("website"));
 //routes
 //Post method
 function postDatafun(req, res) {
-    console.log("data has been arraived");
+    // console.log("data has been arraived");
     console.log(req.body);
     const myData = req.body;
     newicomingData = {
@@ -29,17 +29,17 @@ function postDatafun(req, res) {
         feelings: myData.feelings,
         newDate: myData.newDate,
     };
-    icomingData.push(newicomingData);
+    icomingData[0] = newicomingData;
 }
 app.post("/postData", postDatafun);
 
 /////////////////////////////////////////Get method//////////////////////////
 function getDatafun(req, res) {
-    console.log("data has been sent");
+    // console.log("data has been sent");
     res.send(icomingData[0]);
     //make it empty again
-    icomingData = [];
-    console.log("after sent");
+    //icomingData = [];
+    //console.log("after sent");
 }
 app.get("/getData", getDatafun);
 
