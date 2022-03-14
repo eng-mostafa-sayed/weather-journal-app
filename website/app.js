@@ -23,5 +23,7 @@ genBtn.addEventListener("click", function() {
     //checking if the user inserted zip code
     if (!zipCode) {
         alert("enter the zip code");
+    } else {
+        console.log("there is zip code");
     }
 });
