@@ -3,5 +3,22 @@
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.3"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "weather-journal-app",
+  "description": "## Overview This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI.",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eng-mostafa-sayed/weather-journal-app.git"
+  },
+  "author": "mostafa sayed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eng-mostafa-sayed/weather-journal-app/issues"
+  },
+  "homepage": "https://github.com/eng-mostafa-sayed/weather-journal-app#readme"
 }
