@@ -1,111 +1,115 @@
-body{
+body {
     background: #fffff8;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-#app{
+#app {
     display: grid;
     grid-auto-rows: minmax(150px, auto);
     /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
+    height: 100vh;
+    background: #fff;
+    color: black;
     justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Comic Sans MS";
 }
 
-.holder{
-
+.holder {
+    font-family: "Comic Sans MS";
+    padding: 3% 2%;
 }
 
-.entry{
-    background: rgba(59, 74, 107, .4);
+.entry {
+    background: rgba(59, 74, 107, 0.4);
 }
 
-#entryHolder{
+#entryHolder {}
 
-}
+#date {}
 
-#date{
+#temp {}
 
-}
-
-#temp{
-
-}
-
-#content{
-
-}
+#content {}
 
 .headline {
-
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
 }
-.title{
 
-}
+.title {}
+
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
+
+label {
+    display: block;
     font-size: 27px;
+    margin: 2% 0%;
 }
 
-input{
-    display:block;
+input {
+    display: block;
     height: 60px;
     width: 320px;
-    background:#22b2da;
+    background: gray;
     color: #f0d43a;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+    border: #444 1px solid;
     border: none;
 }
 
-button{
+button {
     width: 400px;
     height: 100px;
     background: #3b4a6b;
     color: #f0d43a;
     font-size: 26px;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Comic Sans MS";
     border: none;
     box-shadow: 2px 4px 5px #444;
 }
-h1{
+
+h1 {
     font-size: 36px;
+    margin: 2% 1%;
 }
 
-textarea{
-    background:#22b2da;
+textarea {
+    background: gray;
     color: #f0d43a;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
 }
+
+
 /* Reset style for HTML element on active to have no border*/
+
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
     outline: none;
 }
+
+
 /* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
 
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+::placeholder {
+    /* Firefox, Chrome, Opera */
+    color: #f0d43a;
+    font-family: "Oswald", sans-serif;
+}
 
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #f0d43a;
+    font-family: "Oswald", sans-serif;
+}
 
-} 
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #f0d43a;
+    font-family: "Oswald", sans-serif;
+}
