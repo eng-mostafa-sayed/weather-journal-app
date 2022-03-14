@@ -58,9 +58,9 @@ genBtn.addEventListener("click", async function() {
             // console.log("response is:\n");
             //console.log(data);
 
-            postData("/postData", {
+            postDataFun("http://localhost:5500/postData", {
                 temp: data.main.temp,
-                feelings: feelings,
+                feelings: document.querySelector("#feelings").value,
                 newDate: newDate,
             });
 
@@ -93,10 +93,10 @@ const GetWeatherData = async(zipCode) => {
 };
 
 //////////////////////////////////////////////////////////////////post data////////////////////////////////////////////////
-const postData = async(url = "", data = {}) => {
+const postDataFun = async(url = "", data = {}) => {
     //this is for testing only
     console.log("inside post data");
-    await fetch("/postData", {
+    await fetch("http://localhost:5500/postData", {
         method: "POST",
         credentials: "same-origin",
         headers: {
@@ -117,11 +117,12 @@ const postData = async(url = "", data = {}) => {
 /////////////////////////////////////////////////updating my user interface elements using async func////////////////////////////
 async function my_UI_Updater() {
     //waiting for fetch
-    const reqs = await fetch("/getData");
+    const reqs = await fetch("http://localhost:5500/getData");
     //convert it to JSON format
     const myAllData = await reqs.json();
     try {
         //trying to edit the ui element's content(its inner HTML)
+
         document.getElementById("temp").innerHTML =
             "Temprature is: " + Math.round(myAllData.temp) + " degree";
         document.getElementById("content").innerHTML =
