@@ -17,9 +17,18 @@ app.use(express.json());
 
 // Cors for cross origin allowance
 app.use(cors());
-// Initialize the main project folder
+// Initialize the main project folder(asking express to use this html files)
 app.use(express.static("website"));
 
+//routes
+//Post method
+app.post("/postData", (req, res) => {
+    console.log("data has been arraived");
+});
+//Get method
+app.get("/getData", (req, res) => {
+    console.log("data has been sent");
+});
 // Setup Server
 app.listen(port, () => {
     console.log(`server is running on port:  ${port}`);
