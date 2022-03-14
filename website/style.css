@@ -26,14 +26,6 @@ body {
     border-radius: 15px;
 }
 
-#entryHolder {}
-
-#date {}
-
-#temp {}
-
-#content {}
-
 .headline {
     font-size: 50px;
     text-align: center;
