@@ -32,8 +32,22 @@ genBtn.addEventListener("click", function() {
     }
     //here it is not abuse or empty
     else {
+        //this is for testing only
         console.log("there is zip code");
+        //this is my api now
         let weatherApi = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${myApiKey}&units=metric`;
+        //this is for testing only
         console.log(weatherApi);
+
+        //fetching from the server
+        //await used to whait for response
+        const resp = await fetch(weatherApi);
+        const data = await resp.json();
+        //storing the tempreature
+        const theTEMP = data.main.temp;
+        //this is for testing only
+        console.log(theTEMP);
+        //this is for testing only
+        console.log(data);
     }
 }); //the end of the event listener
