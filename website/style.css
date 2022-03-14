@@ -1,6 +1,7 @@
 body {
     background: #fffff8;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Comic Sans MS";
 }
 
 #app {
@@ -13,11 +14,9 @@ body {
     justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
-    font-family: "Comic Sans MS";
 }
 
 .holder {
-    font-family: "Comic Sans MS";
     padding: 3% 2%;
 }
 
@@ -70,10 +69,10 @@ button {
     background: #3b4a6b;
     color: #f0d43a;
     font-size: 26px;
-    font-family: "Comic Sans MS";
     border: 2px solid black;
     border-radius: 20px;
     box-shadow: 2px 4px 5px #444;
+    font-family: "Comic Sans MS";
 }
 
 h1 {
@@ -100,7 +99,7 @@ button:focus {
     outline: none;
 }
 
-button
+
 /* Style for Placeholder Text*/
 
 ::placeholder {
