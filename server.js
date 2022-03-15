@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-icomingData = [];
+icomingData = {};
 
 // Require Express to run server and routes
 const express = require("express");
@@ -24,19 +24,18 @@ function postDatafun(req, res) {
     // console.log("data has been arraived");
     console.log(req.body);
     const myData = req.body;
-    newicomingData = {
+    icomingData = {
         temp: myData.temp,
         feelings: myData.feelings,
         newDate: myData.newDate,
     };
-    icomingData[0] = newicomingData;
 }
 app.post("/postData", postDatafun);
 
 /////////////////////////////////////////Get method//////////////////////////
 function getDatafun(req, res) {
     // console.log("data has been sent");
-    res.send(icomingData[0]);
+    res.send(icomingData);
     //make it empty again
     //icomingData = [];
     //console.log("after sent");

@@ -37,17 +37,16 @@ genBtn.addEventListener("click", async function() {
             alert("invalid  zip code");
         } else {
             //chain promises
-
-            GetWeatherData(zipCode).then(
-                postDataFun("http://localhost:5500/postData", {
-                    //getting the temp value from the api
-                    temp: tmpp,
-                    // getting the value from the textarea
-                    feelings: document.querySelector("#feelings").value,
-                    newDate: newDate,
-                })
-            );
-
+            GetWeatherData(zipCode);
+            postDataFun("http://localhost:5500/postData", {
+                //getting the temp value from the api
+                temp: tmpp,
+                // getting the value from the textarea
+                feelings: document.querySelector("#feelings").value,
+                newDate: newDate,
+            });
+            document.getElementById("temp").innerHTML =
+                "Temprature is: " + Math.round(tmpp) + " degree";
             my_UI_Updater();
         }
     }
@@ -66,10 +65,9 @@ const GetWeatherData = async(zipCode) => {
     //convert it to JSON format
     const data = await resp.json();
     //storing the tempreature
-    const theTEMP = data.main.temp;
-    tmpp = theTEMP;
+    tmpp = data.main.temp;
     //this is for testing only
-    console.log("temp is:" + theTEMP);
+    console.log("temp is:" + tmpp);
     //this is for testing only
     // console.log("response is:\n");
     //console.log(data);
@@ -79,7 +77,7 @@ const GetWeatherData = async(zipCode) => {
 const postDataFun = async(url = "", data = {}) => {
     //this is for testing only
     //console.log("inside post data");
-    await fetch("http://localhost:5500/postData", {
+    await fetch("/postData", {
         method: "POST",
         credentials: "same-origin",
         headers: {
@@ -89,7 +87,7 @@ const postDataFun = async(url = "", data = {}) => {
     });
     try {
         const data = await response.json();
-        //console.log("response data is :" + data);
+        console.log(data);
         return data;
     } catch (err) {
         // if there were any error then catch an error
@@ -98,14 +96,14 @@ const postDataFun = async(url = "", data = {}) => {
 };
 
 /////////////////////////////////////////////////updating my user interface elements using async func////////////////////////////
-async function my_UI_Updater() {
+const my_UI_Updater = async() => {
     //waiting for fetch
     const reqs = await fetch("http://localhost:5500/getData");
     //convert it to JSON format
-    const myAllData = await reqs.json();
+
     try {
         //trying to edit the ui element's content(its inner HTML)
-
+        const myAllData = await reqs.json();
         document.getElementById("temp").innerHTML =
             "Temprature is: " + Math.round(myAllData.temp) + " degree";
         document.getElementById("content").innerHTML =
@@ -117,4 +115,4 @@ async function my_UI_Updater() {
         // if there were any error then catch an error
         console.log("Error Occured:" + err);
     }
-}
+};
