@@ -16,10 +16,6 @@ body {
     font-size: 20px;
 }
 
-.holder {
-    padding: 3% 2%;
-}
-
 .entry {
     background: rgba(59, 74, 107, 0.4);
     border: 2px solid black;
@@ -87,6 +83,11 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+}
+
+.myInput,
+#generate {
+    display: inline-block;
 }
 
 
